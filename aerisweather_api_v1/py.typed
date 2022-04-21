@@ -1,0 +1,2 @@
+# The AerisWeather Python SDK contains inline type annotations, in accordance with
+# https://mypy.readthedocs.io/en/stable/installed_packages.html#creating-pep-561-compatible-packages
