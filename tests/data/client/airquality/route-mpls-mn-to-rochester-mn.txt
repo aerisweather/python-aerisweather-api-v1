@@ -1,0 +1,255 @@
+# Test dataset for air quality with multiple results via the route action.
+#
+# Aeris API POST: airquality/route
+#
+# Body:
+# [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-93.2668, 44.9739]}, "id": "0"}, {"type": "Feature", "geometry": {"type": "Point", "coordinates": [-92.4629, 44.023]}, "id": "1", "properties": {"from": "+90minutes"}}]
+{
+    "success": true,
+    "error": null,
+    "response": [
+        {
+            "type": "Feature",
+            "id": "44.9739,-93.2668",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2668,
+                    44.9739
+                ]
+            },
+            "properties": {
+                "request": {
+                    "id": "44.9739,-93.2668",
+                    "skipped": false,
+                    "success": true,
+                    "error": null
+                },
+                "response": {
+                    "id": null,
+                    "loc": {
+                        "lat": 44.9739,
+                        "long": -93.2668
+                    },
+                    "place": {
+                        "name": "minneapolis",
+                        "state": "mn",
+                        "country": "us"
+                    },
+                    "periods": [
+                        {
+                            "dateTimeISO": "2022-05-01T10:00:00-05:00",
+                            "timestamp": 1651417200,
+                            "aqi": 13,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow",
+                            "dominant": "o3",
+                            "pollutants": [
+                                {
+                                    "type": "o3",
+                                    "name": "ozone",
+                                    "valuePPB": 14.5,
+                                    "valueUGM3": 29.0145,
+                                    "aqi": 13,
+                                    "category": "good",
+                                    "color": "00E400",
+                                    "method": "airnow"
+                                },
+                                {
+                                    "type": "pm2.5",
+                                    "name": "particle matter (<2.5\u00b5m)",
+                                    "valuePPB": null,
+                                    "valueUGM3": 1,
+                                    "aqi": 4,
+                                    "category": "good",
+                                    "color": "00E400",
+                                    "method": "airnow"
+                                },
+                                {
+                                    "type": "pm10",
+                                    "name": "particle matter (<10\u00b5m)",
+                                    "valuePPB": null,
+                                    "valueUGM3": 1,
+                                    "aqi": 1,
+                                    "category": "good",
+                                    "color": "00E400",
+                                    "method": "airnow"
+                                },
+                                {
+                                    "type": "co",
+                                    "name": "carbon monoxide",
+                                    "valuePPB": 181.0087,
+                                    "valueUGM3": 207.436,
+                                    "aqi": 2,
+                                    "category": "good",
+                                    "color": "00E400",
+                                    "method": "airnow"
+                                },
+                                {
+                                    "type": "no2",
+                                    "name": "nitrogen dioxide",
+                                    "valuePPB": 2,
+                                    "valueUGM3": 4.0465,
+                                    "aqi": 2,
+                                    "category": "good",
+                                    "color": "00E400",
+                                    "method": "airnow"
+                                },
+                                {
+                                    "type": "so2",
+                                    "name": "sulfur dioxide",
+                                    "valuePPB": 0,
+                                    "valueUGM3": 0,
+                                    "aqi": 0,
+                                    "category": "good",
+                                    "color": "00E400",
+                                    "method": "airnow"
+                                }
+                            ]
+                        }
+                    ],
+                    "profile": {
+                        "tz": "America/Chicago",
+                        "sources": [
+                            {
+                                "name": "AirNow (EPA)"
+                            },
+                            {
+                                "name": "Minnesota Pollution Control Agency"
+                            },
+                            {
+                                "name": "US EPA AirNow"
+                            },
+                            {
+                                "name": "OpenAQ"
+                            },
+                            {
+                                "name": "CAMS"
+                            }
+                        ],
+                        "stations": [
+                            "AIRNOW_270530954",
+                            "OPENAQ_US81D1528",
+                            "AIRNOW_270530962",
+                            "OPENAQ_USC46A0E8",
+                            "OPENAQ_US3E5619E",
+                            "AIRNOW_270530963",
+                            "OPENAQ_US946D297",
+                            "AIRNOW_270530910",
+                            "OPENAQ_USE3A8D47",
+                            "AIRNOW_270530909"
+                        ]
+                    }
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "1",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.4629,
+                    44.023
+                ]
+            },
+            "properties": {
+                "request": {
+                    "id": "1",
+                    "skipped": false,
+                    "success": true,
+                    "error": null
+                },
+                "response": {
+                    "id": null,
+                    "loc": {
+                        "lat": 44.023,
+                        "long": -92.4629
+                    },
+                    "place": {
+                        "name": "rochester",
+                        "state": "mn",
+                        "country": "us"
+                    },
+                    "periods": [
+                        {
+                            "dateTimeISO": "2022-05-01T11:00:00-05:00",
+                            "timestamp": 1651420800,
+                            "aqi": 14,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow",
+                            "dominant": "o3",
+                            "pollutants": [
+                                {
+                                    "type": "o3",
+                                    "name": "ozone",
+                                    "valuePPB": 15,
+                                    "valueUGM3": 30,
+                                    "aqi": 14,
+                                    "category": "good",
+                                    "color": "00E400"
+                                },
+                                {
+                                    "type": "pm2.5",
+                                    "name": "particle matter (<2.5\u00b5m)",
+                                    "valuePPB": null,
+                                    "valueUGM3": 1.1,
+                                    "aqi": 5,
+                                    "category": "good",
+                                    "color": "00E400"
+                                },
+                                {
+                                    "type": "pm10",
+                                    "name": "particle matter (<10\u00b5m)",
+                                    "valuePPB": null,
+                                    "valueUGM3": 1.5,
+                                    "aqi": 1,
+                                    "category": "good",
+                                    "color": "00E400"
+                                },
+                                {
+                                    "type": "co",
+                                    "name": "carbon monoxide",
+                                    "valuePPB": 140,
+                                    "valueUGM3": 160,
+                                    "aqi": 2,
+                                    "category": "good",
+                                    "color": "00E400"
+                                },
+                                {
+                                    "type": "no2",
+                                    "name": "nitrogen dioxide",
+                                    "valuePPB": 2,
+                                    "valueUGM3": 3.76,
+                                    "aqi": 2,
+                                    "category": "good",
+                                    "color": "00E400"
+                                },
+                                {
+                                    "type": "so2",
+                                    "name": "sulfur dioxide",
+                                    "valuePPB": 0,
+                                    "valueUGM3": 0.262,
+                                    "aqi": 0,
+                                    "category": "good",
+                                    "color": "00E400"
+                                }
+                            ]
+                        }
+                    ],
+                    "profile": {
+                        "tz": "America/Chicago",
+                        "sources": [
+                            {
+                                "name": "CAMS"
+                            }
+                        ],
+                        "stations": null
+                    }
+                }
+            }
+        }
+    ]
+}

@@ -11,6 +11,7 @@ from typing import Any, Dict, List, Optional
 
 import pytest
 
+from aerisweather_api_v1.model.common import ApiModel
 from aerisweather_api_v1.model.response import AerisApiResponse
 from aerisweather_api_v1.client.http import AerisApiHttpClient
 from aerisweather_api_v1.client.endpoint import AerisApiEndpoint
@@ -18,7 +19,7 @@ from aerisweather_api_v1.client.endpoint import AerisApiEndpoint
 from testhelper.requests import MockSession
 
 
-class MockModel:
+class MockModel(ApiModel):
     """
     Mock model to test the base functionality of the :py:class:`AerisApiEndpoint`.
 
@@ -103,22 +104,22 @@ class TestAerisApiEndpoint:
         Tests that instantiating an AerisApiEndpoint without docs configured raises a TypeError.
         """
 
-        class AerisApiNoDocsEndpoint(AerisApiEndpoint[object]):
+        class AerisApiNoDocsEndpoint(AerisApiEndpoint[ApiModel]):
             path = "mock/path"
 
         with pytest.raises(TypeError):
-            AerisApiNoDocsEndpoint(http_client, lambda o: object())
+            AerisApiNoDocsEndpoint(http_client, lambda o: ApiModel())
 
     def test_instantiating_unconfigured_path_endpoint(self, http_client: AerisApiHttpClient) -> None:
         """
         Tests that instantiating an AerisApiEndpoint without a path configured raises a TypeError.
         """
 
-        class AerisApiNoPathEndpoint(AerisApiEndpoint[object]):
+        class AerisApiNoPathEndpoint(AerisApiEndpoint[ApiModel]):
             docs = "https://www.aerisweather.com/docs/mock"
 
         with pytest.raises(TypeError):
-            AerisApiNoPathEndpoint(http_client, lambda o: object())
+            AerisApiNoPathEndpoint(http_client, lambda o: ApiModel())
 
     @pytest.mark.parametrize(
         "ep_id, temp, wind_speed, wind_dir",

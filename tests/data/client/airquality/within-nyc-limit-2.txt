@@ -1,0 +1,110 @@
+# Test dataset for air quality with multiple results via the within action.
+#
+# The coordinates correspond to a bounding box roughly over New York City.
+#
+# Aeris API query: 'airquality/within?p=40.79775,-73.9735,40.63807,-73.745549&limit=2'
+{
+    "success": true,
+    "error": null,
+    "response": [
+        {
+            "id": "AIRNOW_360810120",
+            "loc": {
+                "long": -73.8933,
+                "lat": 40.7269
+            },
+            "place": {
+                "name": "middle village",
+                "state": "ny",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-29T15:00:00-04:00",
+                    "timestamp": 1651258800,
+                    "aqi": 6,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "pm2.5",
+                    "pollutants": [
+                        {
+                            "type": "pm2.5",
+                            "name": "particle matter (<2.5\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 1.5,
+                            "aqi": 6,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/New_York",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "New York Dept. of Environmental Conservation"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_360810120"
+                ]
+            }
+        },
+        {
+            "id": "OPENAQ_US64790F0",
+            "loc": {
+                "long": -73.8933,
+                "lat": 40.7269
+            },
+            "place": {
+                "name": "columbusville (historical)",
+                "state": "ny",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-29T15:00:00-04:00",
+                    "timestamp": 1651258800,
+                    "aqi": 6,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "pm2.5",
+                    "pollutants": [
+                        {
+                            "type": "pm2.5",
+                            "name": "particle matter (<2.5\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 1.5,
+                            "aqi": 6,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/New_York",
+                "sources": [
+                    {
+                        "name": "US EPA AirNow"
+                    },
+                    {
+                        "name": "New York Dept. of Environmental Conservation"
+                    },
+                    {
+                        "name": "OpenAQ"
+                    }
+                ],
+                "stations": [
+                    "OPENAQ_US64790F0"
+                ]
+            }
+        }
+    ]
+}

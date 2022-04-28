@@ -67,6 +67,7 @@ html_static_path = ["_static"]
 # -- Intersphinx configuration -----------------------------------------------
 
 intersphinx_mapping = {
+    "geojson": ("https://geojson.readthedocs.io/en/latest/", None),
     "requests": ("https://docs.python-requests.org/en/stable/", None),
     "python": ("https://docs.python.org/3", None),
 }

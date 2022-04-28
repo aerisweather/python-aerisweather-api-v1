@@ -1,0 +1,116 @@
+# Test dataset for air quality with a single result via the :id action.
+#
+# Aeris API query: airquality/55344
+{
+    "success": true,
+    "error": null,
+    "response": [
+        {
+            "id": null,
+            "loc": {
+                "lat": 44.85469,
+                "long": -93.47079
+            },
+            "place": {
+                "name": "eden prairie",
+                "state": "mn",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-27T13:00:00-05:00",
+                    "timestamp": 1651082400,
+                    "aqi": 20,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 22.0556,
+                            "valueUGM3": 44.1338,
+                            "aqi": 20,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow"
+                        },
+                        {
+                            "type": "pm2.5",
+                            "name": "particle matter (<2.5\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 3.7072,
+                            "aqi": 15,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow"
+                        },
+                        {
+                            "type": "co",
+                            "name": "carbon monoxide",
+                            "valuePPB": 132.7919,
+                            "valueUGM3": 152.1896,
+                            "aqi": 1,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow"
+                        },
+                        {
+                            "type": "no2",
+                            "name": "nitrogen dioxide",
+                            "valuePPB": 4.159,
+                            "valueUGM3": 8.6256,
+                            "aqi": 4,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow"
+                        },
+                        {
+                            "type": "so2",
+                            "name": "sulfur dioxide",
+                            "valuePPB": 0,
+                            "valueUGM3": 0,
+                            "aqi": 0,
+                            "category": "good",
+                            "color": "00E400",
+                            "method": "airnow"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Minnesota Pollution Control Agency"
+                    },
+                    {
+                        "name": "US EPA AirNow"
+                    },
+                    {
+                        "name": "OpenAQ"
+                    },
+                    {
+                        "name": "CAMS"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_271390505",
+                    "OPENAQ_US03FC368",
+                    "AIRNOW_270530963",
+                    "OPENAQ_US3E5619E",
+                    "AIRNOW_270530954",
+                    "OPENAQ_US81D1528",
+                    "AIRNOW_270530962",
+                    "OPENAQ_USC46A0E8",
+                    "OPENAQ_US6C6607E",
+                    "AIRNOW_270370480"
+                ]
+            }
+        }
+    ]
+}

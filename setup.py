@@ -19,6 +19,7 @@ with open(path.join(thisdir, "README.md"), "r") as f:
 source_url = "https://www.github.com/aerisweather/python-aerisweather-api-v1"
 
 install_requires = [
+    "geojson >= 2.0.0, < 3.0.0",
     "requests >= 2.0.0, < 3.0.0",
 ]
 

@@ -1,0 +1,303 @@
+# Test dataset for air quality with multiple results via the search action.
+#
+# Aeris API query: airquality/search?query=state:mn&limit=5
+{
+    "success": true,
+    "error": null,
+    "response": [
+        {
+            "id": "AIRNOW_270031001",
+            "loc": {
+                "long": -93.201103,
+                "lat": 45.400799
+            },
+            "place": {
+                "name": "bethel",
+                "state": "mn",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-27T15:00:00-05:00",
+                    "timestamp": 1651089600,
+                    "aqi": 44,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 48,
+                            "valueUGM3": 96,
+                            "aqi": 44,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Minnesota Pollution Control Agency"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_270031001"
+                ]
+            }
+        },
+        {
+            "id": "AIRNOW_270031002",
+            "loc": {
+                "long": -93.2139,
+                "lat": 45.1425
+            },
+            "place": {
+                "name": "blaine",
+                "state": "mn",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-27T15:00:00-05:00",
+                    "timestamp": 1651089600,
+                    "aqi": 42,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "co",
+                            "name": "carbon monoxide",
+                            "valuePPB": 100,
+                            "valueUGM3": 114.5,
+                            "aqi": 1,
+                            "category": "good",
+                            "color": "00E400"
+                        },
+                        {
+                            "type": "no2",
+                            "name": "nitrogen dioxide",
+                            "valuePPB": 0,
+                            "valueUGM3": 0.188,
+                            "aqi": 0,
+                            "category": "good",
+                            "color": "00E400"
+                        },
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 46,
+                            "valueUGM3": 92,
+                            "aqi": 42,
+                            "category": "good",
+                            "color": "00E400"
+                        },
+                        {
+                            "type": "pm10",
+                            "name": "particle matter (<10\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 6,
+                            "aqi": 5,
+                            "category": "good",
+                            "color": "00E400"
+                        },
+                        {
+                            "type": "pm2.5",
+                            "name": "particle matter (<2.5\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 2,
+                            "aqi": 8,
+                            "category": "good",
+                            "color": "00E400"
+                        },
+                        {
+                            "type": "so2",
+                            "name": "sulfur dioxide",
+                            "valuePPB": 0,
+                            "valueUGM3": 0,
+                            "aqi": 0,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Minnesota Pollution Control Agency"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_270031002"
+                ]
+            }
+        },
+        {
+            "id": "AIRNOW_270052013",
+            "loc": {
+                "long": -95.8467,
+                "lat": 46.8511
+            },
+            "place": {
+                "name": "detroit lakes",
+                "state": "mn",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-27T15:00:00-05:00",
+                    "timestamp": 1651089600,
+                    "aqi": 44,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 48,
+                            "valueUGM3": 96,
+                            "aqi": 44,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Minnesota Pollution Control Agency"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_270052013"
+                ]
+            }
+        },
+        {
+            "id": "AIRNOW_270072304",
+            "loc": {
+                "long": -95.029172,
+                "lat": 47.878159
+            },
+            "place": {
+                "name": "redby",
+                "state": "mn",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-27T15:00:00-05:00",
+                    "timestamp": 1651089600,
+                    "aqi": 8,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "pm2.5",
+                    "pollutants": [
+                        {
+                            "type": "pm2.5",
+                            "name": "particle matter (<2.5\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 2,
+                            "aqi": 8,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Minnesota Pollution Control Agency"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_270072304"
+                ]
+            }
+        },
+        {
+            "id": "AIRNOW_270177417",
+            "loc": {
+                "long": -92.511722,
+                "lat": 46.713694
+            },
+            "place": {
+                "name": "cloquet",
+                "state": "mn",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-27T15:00:00-05:00",
+                    "timestamp": 1651089600,
+                    "aqi": 37,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 41,
+                            "valueUGM3": 82,
+                            "aqi": 37,
+                            "category": "good",
+                            "color": "00E400"
+                        },
+                        {
+                            "type": "pm2.5",
+                            "name": "particle matter (<2.5\u00b5m)",
+                            "valuePPB": null,
+                            "valueUGM3": 1,
+                            "aqi": 4,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Minnesota Pollution Control Agency"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_270177417"
+                ]
+            }
+        }
+    ]
+}

@@ -5,7 +5,7 @@ aerisweather_api_v1/client/http
 Contains HTTP client code for v1 of the Aeris API.
 """
 
-from typing import Any, Dict, Optional
+from typing import Any, MutableMapping, Optional
 
 import requests
 
@@ -45,10 +45,39 @@ class AerisApiHttpClient:
         else:
             self._requests = requests_session
 
-        self._requests.params = {"client_id": client_id, "client_secret": client_secret}
+        self.params: MutableMapping[str, str] = dict()
+        self.client_id = client_id
+        self.client_secret = client_secret
+        self._requests.params = self.params
         self._requests.headers.update({"User-Agent": user_agent})
 
-    def request(self, method: str, path: str, **kwargs: Dict[str, Any]) -> requests.Response:
+    @property
+    def client_id(self) -> str:
+        """
+        The AerisWeather client ID used in requests made by this HTTP client.
+        """
+        return self._client_id
+
+    @client_id.setter
+    def client_id(self, v: str) -> str:
+        self._client_id = v
+        self.params["client_id"] = v
+        return self._client_id
+
+    @property
+    def client_secret(self) -> str:
+        """
+        The AerisWeather client secret used in requests made by this HTTP client.
+        """
+        return self._client_secret
+
+    @client_secret.setter
+    def client_secret(self, v: str) -> str:
+        self._client_secret = v
+        self.params["client_secret"] = v
+        return self._client_secret
+
+    def request(self, method: str, path: str, **kwargs: Any) -> requests.Response:
         r"""
         Performs an HTTP request against the Aeris API at the given path.
 
@@ -57,9 +86,9 @@ class AerisApiHttpClient:
         :param \*\*kwargs: additional keyword arguments as expected by :py:meth:`requests.Session.request`
         :returns: the resulting HTTP response
         """
-        return self._requests.request(method, self._url(path), **kwargs)  # type: ignore
+        return self._requests.request(method, self._url(path), **kwargs)
 
-    def get(self, path: str, **kwargs: Dict[str, Any]) -> requests.Response:
+    def get(self, path: str, **kwargs: Any) -> requests.Response:
         r"""
         Performs an HTTP GET request against the given path.
 
@@ -67,9 +96,9 @@ class AerisApiHttpClient:
         :param \*\*kwargs: keyword arguments as expected by :py:meth:`requests.Session.get`
         :returns: the resulting HTTP response
         """
-        return self._requests.get(self._url(path), **kwargs)  # type: ignore
+        return self._requests.get(self._url(path), **kwargs)
 
-    def post(self, path: str, **kwargs: Dict[str, Any]) -> requests.Response:
+    def post(self, path: str, **kwargs: Any) -> requests.Response:
         r"""
         Performs an HTTP POST request against the given path.
 
@@ -77,7 +106,7 @@ class AerisApiHttpClient:
         :param \*\*kwargs: keyword arguments as expected by :py:meth:`requests.Session.post`
         :returns: the resulting HTTP response
         """
-        return self._requests.post(self._url(path), **kwargs)  # type: ignore
+        return self._requests.post(self._url(path), **kwargs)
 
     def _url(self, path: str) -> str:
         """
@@ -87,3 +116,6 @@ class AerisApiHttpClient:
         :returns: a full URL constructed from the base URL and given path
         """
         return f"{self.base_url}/{path.lstrip('/')}"
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(client_id={self.client_id}, base_url={self.base_url})"

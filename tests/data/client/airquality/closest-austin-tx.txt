@@ -1,0 +1,124 @@
+# Test dataset for air quality with multiple results via the closest action.
+#
+# Aeris API query: airquality/closest?p=austin,tx&limit=2
+{
+    "success": true,
+    "error": null,
+    "response": [
+        {
+            "id": "AIRNOW_840484531619",
+            "loc": {
+                "long": -97.721277,
+                "lat": 30.250845
+            },
+            "place": {
+                "name": "austin",
+                "state": "tx",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-29T09:00:00-05:00",
+                    "timestamp": 1651240800,
+                    "aqi": 19,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 21,
+                            "valueUGM3": 42,
+                            "aqi": 19,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "AirNow (EPA)"
+                    },
+                    {
+                        "name": "Capital Area Council of Governments"
+                    }
+                ],
+                "stations": [
+                    "AIRNOW_840484531619"
+                ]
+            },
+            "relativeTo": {
+                "lat": 30.26715,
+                "long": -97.74306,
+                "bearing": 131,
+                "bearingENG": "SE",
+                "distanceKM": 2.768,
+                "distanceMI": 1.72
+            }
+        },
+        {
+            "id": "OPENAQ_US3AC0B92",
+            "loc": {
+                "long": -97.721277,
+                "lat": 30.250845
+            },
+            "place": {
+                "name": "city of austin electric utility",
+                "state": "tx",
+                "country": "us"
+            },
+            "periods": [
+                {
+                    "dateTimeISO": "2022-04-29T09:00:00-05:00",
+                    "timestamp": 1651240800,
+                    "aqi": 0,
+                    "category": "good",
+                    "color": "00E400",
+                    "method": "airnow",
+                    "dominant": "o3",
+                    "pollutants": [
+                        {
+                            "type": "o3",
+                            "name": "ozone",
+                            "valuePPB": 0,
+                            "valueUGM3": 0.021,
+                            "aqi": 0,
+                            "category": "good",
+                            "color": "00E400"
+                        }
+                    ]
+                }
+            ],
+            "profile": {
+                "tz": "America/Chicago",
+                "sources": [
+                    {
+                        "name": "US EPA AirNow"
+                    },
+                    {
+                        "name": "Capital Area Council of Governments"
+                    },
+                    {
+                        "name": "OpenAQ"
+                    }
+                ],
+                "stations": [
+                    "OPENAQ_US3AC0B92"
+                ]
+            },
+            "relativeTo": {
+                "lat": 30.26715,
+                "long": -97.74306,
+                "bearing": 131,
+                "bearingENG": "SE",
+                "distanceKM": 2.768,
+                "distanceMI": 1.72
+            }
+        }
+    ]
+}
