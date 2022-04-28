@@ -68,6 +68,7 @@ html_static_path = ["_static"]
 
 intersphinx_mapping = {
     "requests": ("https://docs.python-requests.org/en/stable/", None),
+    "python": ("https://docs.python.org/3", None),
 }
 
 # -- AerisWeather doc support ------------------------------------------------
