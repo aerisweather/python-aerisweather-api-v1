@@ -8,16 +8,32 @@ Provides requests-related helper code for tests.
 from http import HTTPStatus
 import json
 from unittest.mock import MagicMock
-from typing import Any, Dict, List, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 import requests
 
 
-def make_response(request: requests.PreparedRequest, status_code: int, content: str) -> requests.Response:
+def make_response(
+    request: Optional[requests.PreparedRequest], status_code: int, content: Optional[str]
+) -> requests.Response:
     response = requests.Response()
-    response.request = request
+
+    # When constructing the expected AerisApiResponse object during
+    # endpoint/client tests, we won't have a proper PreparedRequest.
+    #
+    # Therefore, we allow it to be set to None here.
+    response.request = request  # type: ignore
+
     response.status_code = status_code
-    response._content = content.encode("utf-8")
+
+    # When constructing the expected AerisApiResponse object during
+    # endpoint/client tests, we do not need to provide the full content
+    # of the body for comparison so allow it to be omitted.
+    #
+    # When the AerisApiClient is invoked, the requests.Response object
+    # that is returned has content stripped to save memory.
+    if content is not None:
+        response._content = content.encode("utf-8")
 
     return response
 
