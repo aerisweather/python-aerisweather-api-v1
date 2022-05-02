@@ -11,8 +11,9 @@ from typing import Any, Dict, List, Optional
 
 import pytest
 
+from aerisweather_api_v1.error import InvalidAerisApiResponseError
 from aerisweather_api_v1.model.common import ApiModel
-from aerisweather_api_v1.model.response import AerisApiResponse
+from aerisweather_api_v1.model.response import AerisApiResponse, AerisApiResponseError
 from aerisweather_api_v1.client.http import AerisApiHttpClient
 from aerisweather_api_v1.client.endpoint import AerisApiEndpoint
 
@@ -120,6 +121,92 @@ class TestAerisApiEndpoint:
 
         with pytest.raises(TypeError):
             AerisApiNoPathEndpoint(http_client, lambda o: ApiModel())
+
+    @pytest.mark.parametrize(
+        "data",
+        [
+            [1, 2, 3],
+            {"k": "v"},
+        ],
+    )
+    def test_data_with_get_raises_error(self, mock_endpoint: MockAerisApiEndpoint, data: Any) -> None:
+        """
+        Tests that passing any data to an endpoint making a GET request raises an error.
+        """
+        with pytest.raises(ValueError):
+            mock_endpoint._request("GET", action="within", query_params={}, data=data)
+
+    def test_aeris_api_invalid_response_raises_error(
+        self, mock_endpoint: MockAerisApiEndpoint, requests_session: MockSession
+    ) -> None:
+        """
+        Tests that an invalid response from the Aeris API raises an InvalidAerisApiResponseError.
+        """
+        requests_session.add_response(HTTPStatus.BAD_GATEWAY, "502 Bad Gateway")
+        with pytest.raises(InvalidAerisApiResponseError):
+            mock_endpoint("55344")
+
+    def test_unauthorized_raises_aeris_api_error(
+        self, mock_endpoint: MockAerisApiEndpoint, requests_session: MockSession
+    ) -> None:
+        """
+        Tests that an error response from the Aeris API raises an exception.
+        """
+        requests_session.add_response(
+            HTTPStatus.UNAUTHORIZED,
+            json.dumps(
+                {
+                    "success": False,
+                    "error": {
+                        "code": "invalid_client",
+                        "description": 'A valid "client_id" and "client_secret" were not provided.',
+                    },
+                    "response": [],
+                }
+            ),
+        )
+        with pytest.raises(AerisApiResponseError):
+            mock_endpoint("55344")
+
+    def test_non_2xx_without_error_raises_invalid_response(
+        self, mock_endpoint: MockAerisApiEndpoint, requests_session: MockSession
+    ) -> None:
+        """
+        Tests that a 4xx or 5xx Aeris API response with a null `error` object raises
+        an InvalidAerisApiResponseError.
+        """
+        requests_session.add_response(
+            HTTPStatus.INTERNAL_SERVER_ERROR,
+            json.dumps(
+                {
+                    "success": False,
+                    "error": None,
+                    "response": [],
+                }
+            ),
+        )
+        with pytest.raises(InvalidAerisApiResponseError):
+            mock_endpoint("55344")
+
+    def test_non_success_without_error_raises_invalid_response(
+        self, mock_endpoint: MockAerisApiEndpoint, requests_session: MockSession
+    ) -> None:
+        """
+        Tests an Aeris API response with success = False and a null `error` object raises
+        an InvalidAerisApiResponseError.
+        """
+        requests_session.add_response(
+            HTTPStatus.OK,
+            json.dumps(
+                {
+                    "success": False,
+                    "error": None,
+                    "response": [],
+                }
+            ),
+        )
+        with pytest.raises(InvalidAerisApiResponseError):
+            mock_endpoint("55344")
 
     @pytest.mark.parametrize(
         "ep_id, temp, wind_speed, wind_dir",
