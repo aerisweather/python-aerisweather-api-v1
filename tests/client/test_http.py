@@ -38,6 +38,36 @@ class TestAerisApiHttpClient:
     Tests the functionality of the AerisApiHttpClient.
     """
 
+    def test_client_id(self, http_client: AerisApiHttpClient) -> None:
+        """
+        Tests that the client ID can be retrieved and set for the AerisApiHttpClient.
+        """
+        assert http_client.client_id == "client_id"
+        assert http_client.params["client_id"] == "client_id"
+
+        http_client.client_id = "new_value"
+
+        assert http_client.client_id == "new_value"
+        assert http_client.params["client_id"] == "new_value"
+
+    def test_client_secret(self, http_client: AerisApiHttpClient) -> None:
+        """
+        Tests that the client secret can be retrieved and set for the AerisApiHttpClient.
+        """
+        assert http_client.client_secret == "client_secret"
+        assert http_client.params["client_secret"] == "client_secret"
+
+        http_client.client_secret = "new_value"
+
+        assert http_client.client_secret == "new_value"
+        assert http_client.params["client_secret"] == "new_value"
+
+    def test_repr_returns_string(self, http_client: AerisApiHttpClient) -> None:
+        """
+        Tests that AerisApiHttpClient.__repr__ returns a string.
+        """
+        assert isinstance(http_client.__repr__(), str)
+
     @pytest.mark.parametrize(
         "base_url, path, expected_url",
         [
