@@ -357,3 +357,10 @@ class TestAerisApiEndpoint:
         response = mock_endpoint.within(p="55344")
 
         assert isinstance(response.api_response, list)
+
+    def test_repr(self, mock_endpoint: MockAerisApiEndpoint) -> None:
+        """
+        Tests that AerisApiEndpoint.__repr__ returns a string.
+        """
+
+        assert isinstance(mock_endpoint.__repr__(), str)

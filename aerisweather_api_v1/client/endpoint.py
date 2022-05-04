@@ -175,3 +175,12 @@ class AerisApiEndpoint(Generic[ApiModelG]):
             deserialized = [self.deserializer(raw_response)]
 
         return AerisApiResponse(http_response, success, error, deserialized)
+
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__name__}("
+            f"path={self.path}, "
+            f"docs={self.docs}, "
+            f"strip_http_response_content={self.strip_http_response_content}"
+            ")"
+        )
