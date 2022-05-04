@@ -1,0 +1,48 @@
+# Test dataset for the GeoJSON deserialization routine with the
+# "properties.response" field stripped.
+#
+# Based on the client/airquality/route-mpls-mn-to-rochester-mn.txt dataset.
+{
+    "success": true,
+    "error": null,
+    "response": [
+        {
+            "type": "Feature",
+            "id": "44.9739,-93.2668",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -93.2668,
+                    44.9739
+                ]
+            },
+            "properties": {
+                "request": {
+                    "id": "44.9739,-93.2668",
+                    "skipped": false,
+                    "success": true,
+                    "error": null
+                }
+            }
+        },
+        {
+            "type": "Feature",
+            "id": "1",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -92.4629,
+                    44.023
+                ]
+            },
+            "properties": {
+                "request": {
+                    "id": "1",
+                    "skipped": false,
+                    "success": true,
+                    "error": null
+                }
+            }
+        }
+    ]
+}
