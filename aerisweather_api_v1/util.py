@@ -116,7 +116,9 @@ class JsonObjectWalker:
         prop = list()
         for i in args:
             if not isinstance(current, (dict, list)):
-                raise self.exc_type(self.non_collection_msg.format(prop=".".join(prop), full_prop=full_prop))
+                raise self.exc_type(
+                    self.non_collection_msg.format(prop=".".join(str(i) for i in prop), full_prop=full_prop)
+                )
             try:
                 prop.append(i)
                 current = current[i]
