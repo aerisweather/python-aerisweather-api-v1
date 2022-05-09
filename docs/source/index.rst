@@ -30,6 +30,15 @@ With a little code, you're off to the races!
     conditions_ny = aeris.conditions("New York, NY")
 
 
+..
+    main table of contents for the sidebar
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+
+   reference
+
 User Guide
 ----------
 
@@ -39,7 +48,6 @@ users of the SDK. Advanced users will learn supported ways to plug-in to the
 SDK to better suit their needs. You'll also learn about the technical
 philosophy on which the AerisWeather Python SDK was built.
 
-
 Reference Manual
 ----------------
 
@@ -47,12 +55,3 @@ The reference manual provides information about the methods, classes, and
 functions of this SDK. If you are already comfortable with how the SDK works
 and you need to look up something specific, the reference manual is where you
 want to be.
-
-.. toctree::
-   :maxdepth: 2
-
-   reference
-
-.. _AerisWeather: https://www.aerisweather.com
-.. _PyPI: https://pypi.org/
-.. _Sign up here: https://www.aerisweather.com/pricing

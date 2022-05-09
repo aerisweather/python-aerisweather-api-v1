@@ -31,10 +31,9 @@ class ApiModel:
     """
 
     def __init__(self) -> None:
-        #: If the request against the Aeris API specified the format as ``geojson``
-        #: (or the request is made against the ``route`` action), the Aeris API
-        #: will return the data in GeoJSON format. This attribute contains the
-        #: GeoJSON feature that encapsulated the model.
+        #: If the request against the Aeris API is made against the ``route``
+        #: action, the Aeris API will return the data in GeoJSON format. This
+        #: attribute contains the GeoJSON feature that encapsulated the model.
         self.geojson: Optional[ApiModelGeoJson] = None
 
     def with_geojson(self, geojson: ApiModelGeoJson) -> "ApiModel":
@@ -50,7 +49,8 @@ class ApiModel:
         return self
 
 
-#: TypeVar for indicating Aeris API models.
+# TypeVar for indicating Aeris API models for use with generics.
+# This should not be used directly.
 ApiModelG = TypeVar("ApiModelG", bound=ApiModel)
 
 
@@ -113,10 +113,12 @@ class Location:
         if not isinstance(other, self.__class__):
             return False
 
-        return self.lat == other.lat and self.long == other.long
+        lat_eq = optisclose(self.lat, other.lat, rel_tol=0.001, abs_tol=0.0001)
+        long_eq = optisclose(self.long, other.long, rel_tol=0.001, abs_tol=0.0001)
+        return lat_eq and long_eq
 
     def __repr__(self) -> str:
-        return f"{self.__class__.__name__}({self.lat}, {self.long})"
+        return f"{self.__class__.__name__}(lat={self.lat}, long={self.long})"
 
     def __iter__(self) -> Generator[float, None, None]:
         return self._iter()
@@ -141,7 +143,8 @@ class Profile:
     """
     Class describing a profile returned by the Aeris API v1.
 
-    :param tz: the timezone associated with the :py:class:`location <LocationV1>`
+    :param tz: the timezone associated with the :py:class:`loc <Location>` returned \
+        with the response
     """
 
     def __init__(self, tz: str) -> None:
@@ -166,7 +169,9 @@ class Profile:
 class RelativeTo:
     """
     Class describing the "relativeTo" field returned by the Aeris API v1 when using
-    the "closest" (and sometimes "within") actions of an endpoint.
+    the "closest" (and sometimes "within") actions of an endpoint. The fields of
+    this object describe the position of the observation location relative to the
+    requested location.
 
     "Requested location" is the location that was passed with the original Aeris
     API request. For example, if ``airquality/closest?p=austin,tx`` is the request,
@@ -219,6 +224,17 @@ class RelativeTo:
             and self.bearingENG == other.bearingENG
         )
 
+    def __repr__(self) -> str:
+        return (
+            f"{self.__class__.__name__}("
+            f"lat={self.lat}, "
+            f"long={self.long}, "
+            f"bearing={self.bearing}/{self.bearingENG}, "
+            f"distanceKM={self.distanceKM}, "
+            f"distanceMI={self.distanceMI}"
+            ")"
+        )
+
 
 class RoutePlace:
     """
@@ -234,6 +250,9 @@ class RoutePlace:
 
     def as_dict(self) -> Dict[str, Any]:
         raise NotImplementedError("subclasses must implement as_dict()")
+
+    def __repr__(self) -> str:
+        return f"{self.__class__.__name__}(id={self.id}, from={self.from_})"
 
 
 class RouteParameterObject(RoutePlace):
@@ -281,8 +300,8 @@ class RouteGeoJsonFeature(Generic[_G], RoutePlace):
 
     See the :aerisapi:`Aeris API route documentation <reference/actions/route>`.
 
-    :param geojson: the GeoJSON feature; must be a :py:class:`Point` or :py:class:`LineString` \
-        *HEADS UP!* GeoJSON features specify (longitude, latitude) pairs **NOT** (latitude, longitude)
+    :param geojson: the GeoJSON feature; must be a :py:class:`Point` or :py:class:`LineString`; \
+        note GeoJSON features specify (longitude, latitude) pairs **NOT** (latitude, longitude)
     :param id: the ID of the GeoJSON feature in the returned route output
     :param from_: the time period of interest for this particular feature
     """

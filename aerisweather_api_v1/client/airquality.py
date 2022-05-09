@@ -15,7 +15,7 @@ from .endpoint import AerisApiEndpoint
 
 class AerisApiAirQualityEndpoint(AerisApiEndpoint[AirQuality]):
     """
-    Client for the Aeris API v1 -- airquality endpoint.
+    Air Quality endpoint for the Aeris API v1.
     """
 
     path = "airquality"
@@ -34,6 +34,15 @@ class AerisApiAirQualityEndpoint(AerisApiEndpoint[AirQuality]):
         radius: Optional[str] = None,
         mindist: Optional[str] = None,
     ) -> AerisApiResponse[AirQuality]:
+        """
+        Performs a request against the air quality endpoint's :aerisapi_epact:`:id <airquality>` action.
+
+        :param id: location or station ID to query information for
+        :param filter: filter to limit results returned; see the :aerisapi_epfilt:`supported filters <airquality>`
+        :param query: query based on given properties; \
+            see the :aerisapi_epquery:`supported query properties <airquality>`
+        :param limit: limit total number of results returned
+        """
         query_params = self._prepare_params(locals())
         return self._request("GET", id, query_params)
 

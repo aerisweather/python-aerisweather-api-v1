@@ -36,6 +36,7 @@ release = project_version
 # ones.
 extensions = [
     "sphinx.ext.autodoc",
+    "sphinx.ext.autosummary",
     "sphinx.ext.extlinks",
     "sphinx.ext.intersphinx",
     "sphinx.ext.viewcode",
@@ -67,6 +68,8 @@ html_static_path = ["_static"]
 # -- Intersphinx configuration -----------------------------------------------
 
 intersphinx_mapping = {
+    # geojson intersphinx mappings don't actually work because the geojson
+    # module doesn't generate # a comprehensive set of docs. Maybe some day...
     "geojson": ("https://geojson.readthedocs.io/en/latest/", None),
     "requests": ("https://docs.python-requests.org/en/stable/", None),
     "python": ("https://docs.python.org/3", None),
@@ -79,6 +82,9 @@ extlinks = {
     "aerisauth": ("https://www.aerisweather.com/support/docs/api/getting-started/authentication/", None),
     "aerisdocs": ("https://www.aerisweather.com/support/docs/%s", None),
     "aerisapi": ("https://www.aerisweather.com/support/docs/api/%s", None),
+    "aerisapi_epact": ("https://www.aerisweather.com/support/docs/api/reference/endpoints/%s/#actions", None),
+    "aerisapi_epfilt": ("https://www.aerisweather.com/support/docs/api/reference/endpoints/%s/#filters", None),
+    "aerisapi_epquery": ("https://www.aerisweather.com/support/docs/api/reference/endpoints/%s/#queries", None),
     "aerisapi_epprop": ("https://www.aerisweather.com/support/docs/api/reference/endpoints/%s/#properties", None),
 }
 

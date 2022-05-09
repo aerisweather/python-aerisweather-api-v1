@@ -204,6 +204,7 @@ class AirQuality(ApiModel):
     For information about this model, consult the
     :aerisapi_epprop:`Aeris API air quality documentation <airquality>`.
 
+    :param id: the ID of the station returning the data, if data is from a single station
     :param loc: the location of the air quality record
     :param place: the place of the air quality record
     :param periods: a list of air quality observations
