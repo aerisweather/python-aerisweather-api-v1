@@ -9,6 +9,7 @@
    :maxdepth: 2
    :hidden:
 
+   user-guide/index
    reference
 
 User Guide
