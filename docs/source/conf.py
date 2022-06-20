@@ -71,7 +71,7 @@ intersphinx_mapping = {
     # geojson intersphinx mappings don't actually work because the geojson
     # module doesn't generate # a comprehensive set of docs. Maybe some day...
     "geojson": ("https://geojson.readthedocs.io/en/latest/", None),
-    "requests": ("https://docs.python-requests.org/en/stable/", None),
+    "requests": ("https://requests.readthedocs.io/en/stable/", None),
     "python": ("https://docs.python.org/3", None),
 }
 
